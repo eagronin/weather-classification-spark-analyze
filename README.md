@@ -1,6 +1,6 @@
 # Analysis
 
-This section describes the analysis of weather patterns in San Diego, CA.  Specifically, we build and evaluate the performance of a decision tree for predicting low humidity days.  Such low humidity days increase the risk of wildfires and, therefore, predicting such days is important for providing a timely warning to the residents and appropriate authorities.
+This section describes the analysis of weather patterns in San Diego, CA.  Specifically, we build and evaluate the performance of a decision tree for predicting low humidity days.  Such low humidity days are known to increase the risk of wildfires and, therefore, predicting such days is important for providing a timely warning to the residents and appropriate authorities.
 
 Exploration and cleaning of the data are discussed in the [previous section](https://eagronin.github.io/weather-classification-spark-prepare/)
 
