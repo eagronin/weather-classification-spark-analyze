@@ -1,11 +1,13 @@
 # Analysis
 
+## Overview
+
 This section describes the analysis of weather patterns in San Diego, CA.  Specifically, we build and evaluate the performance of a decision tree for predicting low humidity days.  Such low humidity days are known to increase the risk of wildfires and, therefore, predicting such days is important for providing a timely warning to the residents and appropriate authorities.
 
 Exploration and cleaning of the data are discussed in the [previous section](https://eagronin.github.io/weather-classification-spark-prepare/).
 
 ## Training a Decision Tree Classifier
-The following code creates a dataframe `featureColumns` that contains only those features that are used for predicting low humidity days.  It then creates the target, a categorical variable to denote if the humidity is not low. If the value is less than 25%, then the categorical value is 0, otherwise the categorical value is 1.  Finally, the code aggregates the features in `featureColumns` into a single column using `VectorAssembler` and partitions the resulting dataframe into training and test sets: 
+The following code creates a data frame `featureColumns` that contains only those features that are used for predicting low humidity days.  It then creates the target, a categorical variable to denote if humidity is not low. If the value is less than 25%, then the categorical value is 0, otherwise the categorical value is 1.  Finally, the code aggregates the features in `featureColumns` into a single column using `VectorAssembler` and partitions the resulting dataframe into training and test sets: 
 
 ```python
 featureColumns = ['air_pressure_9am','air_temp_9am','avg_wind_direction_9am','avg_wind_speed_9am',
@@ -68,7 +70,7 @@ predictions.select("prediction", "label").coalesce(1).write.save(path = "file://
                                                     header = 'true')
 ```
 
-## Evaluation of a Decision Tree Classifier
+## Evaluation of the Decision Tree Classifier
 The following code evaluates the performance of the decision tree:
 
 ```python
@@ -83,7 +85,7 @@ accuracy = evaluator.evaluate(predictions)
 print("Accuracy = %g " % (accuracy))
 ```
 
-The accuracy of the decision tree perormance using test data is 0.75.
+The accuracy score of the decision tree perormance using test data is 0.75.
 
 Next, we generate and output the confusion matrix.  
 
