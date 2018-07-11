@@ -11,7 +11,7 @@ This project is based on assignments from Big Data Specialization by University 
 The analysis for this project was performed in Spark.
 
 ## Training a Decision Tree Classifier
-The following code creates a data frame `featureColumns` that contains only those features that are used for predicting low humidity days.  It then creates the target, a categorical variable to denote if humidity is not low. If the value is less than 25%, then the categorical value is 0, otherwise the categorical value is 1.  Finally, the code aggregates the features in `featureColumns` into a single column using `VectorAssembler` and partitions the resulting dataframe into training and test sets: 
+The following code creates a data frame `featureColumns` that contains only those features that are used for predicting low humidity days.  It then creates the target, a categorical variable to denote if humidity is not low. If the value is less than 25%, then the categorical value is 0, otherwise the categorical value is 1.  Finally, the code aggregates the features in `featureColumns` into a single column using `VectorAssembler` and partitions the resulting data frame into training and test sets: 
 
 ```python
 featureColumns = ['air_pressure_9am','air_temp_9am','avg_wind_direction_9am','avg_wind_speed_9am',
@@ -26,7 +26,7 @@ assembled = assembler.transform(binarizedDF)
 (trainingData, testData) = assembled.randomSplit([.7,.3], seed = 13234)
 ```
 
-Next, we careate and train a decision tree:
+Next, we create and train a decision tree:
 
 ```python
 dt = DecisionTreeClassifier(labelCol = "label", featuresCol = "features", maxDepth = 5, minInstancesPerNode = 20, impurity = "gini")
@@ -64,7 +64,7 @@ predictions.select("prediction", "label").show(20)
 |       1.0|  1.0|
 |       0.0|  0.0|
 
-The output shows that out of the first 20 target values 18 values are predicted corretly.  
+The output shows that out of the first 20 target values 18 values are predicted correctly.  
 
 The following code saves the predictions, which are subsequently used for model evaluation:
 
@@ -89,7 +89,7 @@ accuracy = evaluator.evaluate(predictions)
 print("Accuracy = %g " % (accuracy))
 ```
 
-The accuracy score of the decision tree perormance using test data is 0.75.
+The accuracy score of the decision tree performance using test data is 0.75.
 
 Next, we generate and output the confusion matrix.  
 
